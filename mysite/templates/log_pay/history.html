@@ -1,0 +1,118 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}История{% endblock %}
+{% block css %}
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static '/polls/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% block page %}
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>История запросов</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+           <div class="timeline timeline-inverse">
+                      <!-- timeline time label -->
+                      <div class="time-label">
+                        <span class="bg-danger">
+                          29 окт. 2020
+                        </span>
+                      </div>
+                      <!-- /.timeline-label -->
+                      <!-- timeline item -->
+                      <div>
+
+                        <i class="fas fa-envelope bg-primary"></i>
+
+                        <div class="timeline-item">
+                          <span class="time"><i class="far fa-clock"></i> 1 мин. назад</span>
+
+                          <h3 class="timeline-header"><a href="#">User</a> выполнил запрос</h3>
+
+                          <div class="timeline-body">
+                            Telegram
+                          </div>
+                          <div class="timeline-footer">
+                            <a href="{% url 'log_pay:one' %}" class="btn btn-primary btn-sm">Открыть ссылку</a>
+                            <a href="#" class="btn btn-danger btn-sm">Удалить</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- END timeline item -->
+                      <!-- timeline item -->
+                    
+                      <div class="time-label">
+                        <span class="bg-success">
+                          28 окт. 2020
+                        </span>
+                      </div>
+                      <!-- /.timeline-label -->
+                      <!-- timeline item -->
+                      <div>
+                        <i class="fas fa-camera bg-purple"></i>
+
+                        <div class="timeline-item">
+                          <span class="time"><i class="far fa-clock"></i> 1 день назад</span>
+
+                          <h3 class="timeline-header"><a href="#">User</a> добавил новые изображения</h3>
+
+                          <div class="timeline-body">
+                            <img src="{% static '/images/1.jpg' %}" alt="...">
+                            <img src="{% static '/images/2.jpg' %}" alt="...">
+                            <img src="{% static '/images/3.jpg' %}" alt="...">
+                            <img src="{% static '/images/4.jpg' %}" alt="...">
+                          </div>
+                        </div>
+                      </div>
+                      <!-- END timeline item -->
+                      <div>
+                        <i class="far fa-clock bg-gray"></i>
+                      </div>
+                    </div>
+                  
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+    {% endblock page %}
+{% endblock content %}
+{% block scripts %}
+<!-- DataTables -->
+<script src="{% static '/polls/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+	$("#example2").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+		$("#example3").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+	$("#example4").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+{% endblock %}

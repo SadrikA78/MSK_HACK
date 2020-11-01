@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Регистрация</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/select2/css/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static '/polls/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static '/polls/dist/css/adminlte.min.css' %}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static '/polls/dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"> <b>proo<strong class="text-warning">ARHIV</strong></b></a>
+  </div>
+  <!-- /.login-logo -->
+ <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Новый пользователь</p>
+
+      <form method="post" novalidate  id="quickForm">{% csrf_token %}
+        <div class="input-group mb-3">
+          <input type="text" name="name" class="form-control" placeholder="Имя">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="email" name="email" class="form-control" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="password" class="form-control" placeholder="Пароль">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="password2" class="form-control" placeholder="Повторите пароль">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+              <label for="agreeTerms">
+               Я принемаю <a href="#">пользовательское соглашение</a>
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Регистрация</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <div class="social-auth-links text-center">
+        <p>- ИЛИ -</p>
+        <a href="#" class="btn btn-block btn-primary">
+          Войти с помощью ЭП 
+        </a>
+        <a href="https://www.gosuslugi.ru/" class="btn btn-block btn-danger">
+          Войти через госуслуги (ЕСИА)
+        </a>
+      </div>
+
+      <a href="{% url 'login' %}" class="text-center">Есть аккаунт</a>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card --><!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{% static '/polls/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static '/polls/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static '/polls/dist/js/adminlte.min.js' %}"></script>
+<!-- Select2 -->
+<script src="{% static '/polls/plugins/select2/js/select2.full.min.js' %}"></script>
+<!-- date-range-picker -->
+<script src="{% static '/polls/plugins/daterangepicker/daterangepicker.js' %}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{% static '/polls/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+<!-- InputMask -->
+<script src="{% static '/polls/plugins/moment/moment.min.js' %}"></script>
+<script src="{% static '/polls/plugins/inputmask/min/jquery.inputmask.bundle.min.js' %}"></script>
+<!-- bootstrap color picker -->
+<script src="{% static '/polls/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+<!-- Bootstrap Switch -->
+<script src="{% static '/polls/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+<!-- bs-custom-file-input -->
+<script src="{% static '/polls/plugins/bs-custom-file-input/bs-custom-file-input.min.js' %}"></script>
+<!-- jquery-validation -->
+<script src="{% static '/polls/plugins/jquery-validation/jquery.validate.min.js' %}"></script>
+<script src="{% static '/polls/plugins/jquery-validation/additional-methods.min.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+  bsCustomFileInput.init();
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#quickForm').validate({
+    rules: {
+      name: {
+        required: true
+      },
+      email: {
+        required: true
+      },
+	  password: {
+        required: true
+      },
+      password2: {
+        required: true
+      },
+	  terms: {
+        required: true
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите название"
+		},
+	  email: "Введите название"
+    },
+	
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.form-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
+});
+</script>
+</body>
+</html>

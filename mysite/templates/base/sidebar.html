@@ -1,0 +1,60 @@
+{% block sidebar %}
+			<li class="nav-item has-treeview">
+			<a href="{% url 'log_pay:index' %}"  class="nav-link active">
+              <i class="nav-icon fas fa-globe"></i>
+              <p>
+                Архив
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+			{% for i in types %}
+			<li class="nav-item">
+                <a href="{% url 'log_pay:types' i.id%}" class="nav-link">
+                  <i class="nav-icon far fa-circle"></i>
+                  <p> {{i.name}}
+				   <i class="fas fa-angle-left right"></i>
+				   </p>
+				</a>
+			</li>
+			{% endfor %}
+			</ul>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'log_pay:mission' %}" class="nav-link">
+              <i class="nav-icon fab fa-superpowers"></i>
+              <p>
+                Задачи
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-share-alt"></i>
+              <p>
+                Архивация
+                <span class="right badge badge-danger">Новинка</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">СПРАВКА</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-danger"></i>
+              <p class="text">Настройка аккаунта</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>Анализ документов</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Как это работает?</p>
+            </a>
+          </li>
+        </ul>
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Задачи{% endblock %}
+{% block css %}
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static '/polls/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% block page %}
+	    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Задачи</h1>
+          </div>
+          <div class="col-sm-6">
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Задачи</h3>
+
+          <div class="card-tools">
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+                  <tr>
+                      <th style="width: 1%">
+                          #
+                      </th>
+                      <th style="width: 20%">
+                          Тип задачи
+                      </th>
+                      <th style="width: 30%">
+                          Задача
+                      </th>
+                      <th style="width: 20%">
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>
+                          1
+                      </td>
+                      <td>
+                          <a>
+                              Добавление класса документа
+                          </a>
+                          <br/>
+                          <small>
+                              Всего классов {{types|length}}
+                          </small>
+                      </td>
+                      <td>
+						<p>Определение нового класса документов.</p>
+						Изменился формат документа или появился новый.
+                      </td>
+                      <td class="project-actions text-right">
+                          <button type="button" class="btn btn-primary"  class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Настроить
+                          </button>
+                      </td>
+                  </tr>
+				   <tr>
+                      <td>
+                          2
+                      </td>
+                      <td>
+                          <a>
+                              Анализ и классификация документов
+                          </a>
+                          <br/>
+                          <small>
+                              Закончено {{custom_request.date}}
+                          </small>
+                      </td>
+                      <td>
+						Добавление электронных документов для классификации и выявление сущностей (NER).
+                      </td>
+                      <td class="project-actions text-right">
+                          <button type="button" class="btn btn-primary"  class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg1">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Настроить
+                          </button>
+                      </td>
+                  </tr>
+                   </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Новый класс</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+			<form method="post" novalidate id="quickForm_type"> {% csrf_token %}
+			<div class="row">
+                    <div class="col-sm-12">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Наименование класса</label>
+                    <input type="text" name="name" class="form-control" id="id_name" maxlength="128" placeholder="Наименование">
+                      </div>
+                    </div>
+                  </div>
+              <div class="row">
+                    <div class="col-sm-12">
+					<label for="InputFileType">Добавить файл-образец</label>
+					  <div class="form-group">
+                    
+      <input type="file"  name="input_file_type" id="InputFileType">
+                    </div>
+                    </div>
+					</div>
+					
+            </div>
+            <div class="modal-footer justify-content-between">
+			  <button type="submit" name="new_type" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Добавить</button>
+            </div>
+			</form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+	   <div class="modal fade" id="modal-lg1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Документы для обработки</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+			<form method="post" novalidate id="quickForm"> {% csrf_token %}
+				 
+  <div class="form-group">
+      <input type="file" multiple name="input_file" id="InputFile">
+  </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+			  <button type="submit" name="add_files" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Оценить</button>
+            </div>
+			</form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+    {% endblock page %}
+{% endblock content %}
+{% block scripts %}
+<!-- DataTables -->
+<script src="{% static '/polls/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+	$("#example2").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+		$("#example3").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+	$("#example4").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+{% endblock %}

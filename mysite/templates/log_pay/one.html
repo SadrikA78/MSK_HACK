@@ -1,0 +1,147 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Класс{% endblock %}
+{% block css %}
+<style>body { margin: 0;}<style/>
+<style>canvas { width: 100%; height: 100% }</style>
+<script src="{% static '/polls/plotly/js/plotly.js' %}"></script>
+<script src="{% static '/polls/my/js/three.min.js' %}"></script>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{% static '/polls/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static '/polls/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% block page %}
+	<!-- Content Header (Page header) -->
+<div class="content-header">
+	<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Класс "Разрешение на ввод в эксплуатацию"</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content-header -->
+	<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+				<li class="nav-item"><a class="nav-link active" href="#docs" data-toggle="tab">Все документы</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab">Карта запросов</a></li>
+					
+
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+				<div class="active tab-pane" id="docs">
+				  <div class="col-12">
+                  <p class="lead"></p>
+				    <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Результаты распознанных документов</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Номер</th>
+                  <th>Год</th>
+                  <th>Адрес</th>
+                  <th>Владелец</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>RU77217540</td>
+                  <td>-</td>
+                  <td>ул. Дорожная, д. 7</td>
+                  <td>OOO.ГПК-Строй</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Номер</th>
+                  <th>Год</th>
+                  <th>Адрес</th>
+                  <th>Владелец</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+				</div>
+                   </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="activity">
+				  <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-12">
+				                   
+                  {% autoescape off %}
+				  {{ plt_fig }}
+				  {% endautoescape %}
+				</div>
+				</div>
+                    <!-- Post -->
+       
+                    <!-- Post -->
+               
+                  </div>
+                  <!-- /.tab-pane -->
+                
+
+                  
+				 
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+	</div>
+    <!-- /.content -->
+    {% endblock page %}
+{% endblock content %}
+{% block scripts %}
+<!-- DataTables -->
+<script src="{% static '/polls/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static '/polls/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+	$("#example2").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+		$("#example3").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+	$("#example4").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+{% endblock %}
